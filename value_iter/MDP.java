@@ -56,12 +56,114 @@ public class MDP {
 
 
     public static void main (String[] args) {
-	
+        
+        //taking input for parameters
+        discountFactor = Double.valueOf(args[0]);
+        maxStateUtilityError = Double.valueOf(args[1]);
+        keyLossProbability = Double.valueOf(args[2]);
+        positiveTerminalReward = Double.valueOf(args[3]);
+        negativeTerminalReward = Double.valueOf(args[4]);
+        stepCost = Double.valueOf(args[5]);
+        solutionTechnique = args[6];
+
+
+        //brace yourself
+        initializeMDP(T, R);
+
+        mostOptimalUtilityFunction();
+
     
-	// show method that prints utilities and policy
-	printUtilitiesAndPolicy(utility, policy);
+        // show method that prints utilities and policy
+        printUtilitiesAndPolicy(utility, policy);
+        printingImportantThings();
+        
 
     }
+    
+    
+    
+    //function prints out relevant variables used for problem
+    private static void printingImportantThings() {
+
+        if (solutionTechnique.equals("v")){
+            System.out.println("Policy used: value iteration");
+        } else{
+            System.out.println("Policy used: policy iteration");
+        }
+        
+        System.out.println("Discount factor: " + discountFactor);
+        System.out.println("Maximum state error: " + maxStateUtilityError);
+        System.out.println("Key loss probability: " + keyLossProbability);
+        System.out.println("Positive terminal reward: " + positiveTerminalReward);
+        System.out.println("Negative terminal reward: " + negativeTerminalReward);
+        System.out.println("Step cost: " + stepCost);
+    }
+
+    
+
+    //gets utility of specific action from a given state
+    private static double actionUtility(int state, int action) {
+    	double sum = 0.0;
+    	for (int i = 0; i < NUM_STATES; i++) {
+    		sum  += T[state][action][i] * utility[i];
+    	}
+    	return sum;
+    }
+
+
+    //get the action that returns the most maximumist utility
+    private static double mostOptimalActionUtility(int state) {
+    	double optimalistUtility = -Double.MAX_VALUE;
+
+    	for (int i = 0; i < NUM_ACTIONS; i++){
+    		double currentUtility = actionUtility(state, i);
+    		if (currentUtility > optimalistUtility){
+    			optimalistUtility = currentUtility;
+    		}
+    	}
+    	return optimalistUtility;
+    }
+
+    private static void mostOptimalUtilityFunction() {
+
+    	//Greek bra size?
+    	double delta =  0.0;
+    	double threshold = maxStateUtilityError * (1.0 - discountFactor) / discountFactor;
+
+    	do {
+    		//printUtilitiesAndPolicy(utility, policy);
+
+    		delta = 0.0;
+
+    		for (int s = 0; s < NUM_STATES; s++){
+    			double oldUtility = utility[s];
+
+    			utility[s] = R[s] + discountFactor * mostOptimalActionUtility(s);
+
+    			if (Math.abs(oldUtility - utility[s]) > delta) {
+    				delta = Math.abs(oldUtility - utility[s]);
+    			}
+    		}
+
+    		//System.out.println(delta);
+    	} while (delta >= threshold);
+    }
+
+
+
+
+
+    
+    
+
+
+
+    
+    //
+    //
+    //  *MARK - Steve supplied code below
+    //
+    //
 
 
 
@@ -187,7 +289,7 @@ public class MDP {
 
 	}
 	
-    } // action
+  } // action
 
 
 
