@@ -1,0 +1,108 @@
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -10.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 10
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -20.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 12
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -30.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 11
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -40.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 9
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -50.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 9
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -60.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 9
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -70.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 8
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -80.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 8
+
+
+
+Policy used: value iteration
+         Discount factor: 0.99
+     Maximum state error: 1.0E-6
+    Key loss probability: 0.5
+Positive terminal reward: 1.0
+Negative terminal reward: -90.0
+               Step cost: -0.04
+        Total iterations: 53
+      Milliseconds taken: 10
+
+
+
