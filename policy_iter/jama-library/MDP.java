@@ -55,6 +55,8 @@ public class MDP {
     private static int[] policy = new int[NUM_STATES];
 
 
+
+
     public static void main (String[] args) {
         
         //taking input for parameters
@@ -69,31 +71,31 @@ public class MDP {
 
         //brace yourself
         initializeMDP(T, R);
-
-
+		
 		//start timer
         long startTime = System.nanoTime();
 
-        int totalIterations = mostOptimalUtilityFunction();
+        int totalIterations = mostOptimalPolicyFunction();
 
-    	//end timer, gives time in seconds
+         //end timer, gives time in seconds
         long timeElapsed = (System.nanoTime() - startTime) / 1000000;
 
         printingImportantThings(timeElapsed, totalIterations);
 
         // show method that prints utilities and policy
-        printUtilitiesAndPolicy(utility, policy);        
+        printUtilitiesAndPolicy(utility, policy);
 
+        System.out.println("\n\n\n");
     }
     
     
     
     //function prints out relevant variables used for problem
-    private static void printingImportantThings(long tiempo, int iterations){
+    private static void printingImportantThings(long tiempo, int iterations) {
 
         if (solutionTechnique.equals("v")){
             System.out.println("Policy used: value iteration");
-        } else{
+        } else {
             System.out.println("Policy used: policy iteration");
         }
         
@@ -105,6 +107,7 @@ public class MDP {
         System.out.println("               Step cost: " + stepCost);
         System.out.println("        Total iterations: " + iterations);
         System.out.println("      Milliseconds taken: " + tiempo);
+
     }
 
     
@@ -119,7 +122,7 @@ public class MDP {
     }
 
 
-    //get the action that returns the most maximumist utility
+    //get the value of the action that returns the most maximumist utility
     private static double mostOptimalActionUtility(int state) {
     	double optimalistUtility = -Double.MAX_VALUE;
 
@@ -131,45 +134,6 @@ public class MDP {
     	}
     	return optimalistUtility;
     }
-
-    private static int mostOptimalUtilityFunction() {
-
-    	int iterations = 0;
-
-    	//Greek bra size?
-    	double delta =  0.0;
-    	double threshold = maxStateUtilityError * (1.0 - discountFactor) / discountFactor;
-
-    	do {
-    		iterations++;
-    		delta = 0.0;
-
-    		for (int s = 0; s < NUM_STATES; s++){
-    			double oldUtility = utility[s];
-
-    			utility[s] = R[s] + discountFactor * mostOptimalActionUtility(s);
-
-    			if (Math.abs(oldUtility - utility[s]) > delta) {
-    				delta = Math.abs(oldUtility - utility[s]);
-    			}
-    		}
-
-    		for (int s = 0; s < NUM_STATES; s++) {
-
-    			policy[s] = mostOptimalAction(s);
-
-    		}
-
-
-    		//System.out.println(delta);
-    	} while (delta >= threshold);
-
-    	return iterations;
-    }
-
-
-
-
 
     //get the action that returns the most maximumist utility
     private static int mostOptimalAction(int state) {
@@ -185,6 +149,98 @@ public class MDP {
     	}
     	return action;
     }
+
+
+
+    
+    private static void policy_evaluation() {
+
+    	double[][] the_matrix = new double[NUM_STATES][NUM_STATES];
+
+    	//initiliazing the matrix
+    	the_matrix =  initialize_matrix(the_matrix);
+
+    	//populate that shit
+    	the_matrix = extract_utility_coefficients(the_matrix);
+
+    	//and now math happens!
+    	Matrix ethan_is_gross = new Matrix(the_matrix);
+    	Matrix sophie_is_da_bes = new Matrix(R, NUM_STATES);
+
+    	Matrix utility_matrix = ethan_is_gross.solve(sophie_is_da_bes);
+
+    	//need to update utility array
+    	for(int i = 0; i < NUM_STATES; i++){
+    		utility[i] = utility_matrix.get(i, 0);
+    	}
+
+    }
+
+
+    //blue_pill_or_red_pill
+    //but for real, just an identity matrix
+    private static double[][] initialize_matrix(double[][] neo) {
+    	double[][] red_pill = neo;
+
+    	for(int i = 0; i < NUM_STATES; i++){
+    		for(int j = 0; j < NUM_STATES; j++){
+    			if(i == j){
+    				red_pill[i][j] = 1.0;
+    			} else {
+    				red_pill[i][j] = 0.0;
+    			}
+    		}
+    	}
+    	return red_pill;
+    }
+
+
+    //fills in matrix with coefficients for equations
+    private static double[][] extract_utility_coefficients(double[][] trinity){
+    	for(int i = 0; i < NUM_STATES; i++){
+    		int this_action = policy[i];
+    		for(int j = 0; j < NUM_STATES; j++){
+    			trinity[i][j] -= T[i][this_action][j] * discountFactor;
+    		}
+    	}
+    	return trinity;
+    }
+
+
+
+
+    private static int mostOptimalPolicyFunction() {
+
+    	int iterations = 0;
+
+    	boolean changed =  true;
+    	double threshold = maxStateUtilityError * (1.0 - discountFactor) / discountFactor;
+
+    	do {
+    		iterations++;
+    		changed = false;
+    		policy_evaluation();
+
+    		for (int s = 0; s < NUM_STATES; s++){
+
+    			int curAction = policy[s];
+
+    			if (mostOptimalActionUtility(s) > actionUtility(s, curAction)) {
+    				
+    				policy[s] = mostOptimalAction(s);
+    				changed = true;
+    			}
+    		}
+
+    	} while (changed == true);
+
+    	return iterations;
+    }
+	
+
+
+
+
     
     
 

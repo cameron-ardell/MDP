@@ -70,26 +70,20 @@ public class MDP {
         //brace yourself
         initializeMDP(T, R);
 
+        mostOptimalUtilityFunction();
 
-		//start timer
-        long startTime = System.nanoTime();
-
-        int totalIterations = mostOptimalUtilityFunction();
-
-    	//end timer, gives time in seconds
-        long timeElapsed = (System.nanoTime() - startTime) / 1000000;
-
-        printingImportantThings(timeElapsed, totalIterations);
-
+    
         // show method that prints utilities and policy
-        printUtilitiesAndPolicy(utility, policy);        
+        printUtilitiesAndPolicy(utility, policy);
+        printingImportantThings();
+        
 
     }
     
     
     
     //function prints out relevant variables used for problem
-    private static void printingImportantThings(long tiempo, int iterations){
+    private static void printingImportantThings() {
 
         if (solutionTechnique.equals("v")){
             System.out.println("Policy used: value iteration");
@@ -97,14 +91,12 @@ public class MDP {
             System.out.println("Policy used: policy iteration");
         }
         
-        System.out.println("         Discount factor: " + discountFactor);
-        System.out.println("     Maximum state error: " + maxStateUtilityError);
-        System.out.println("    Key loss probability: " + keyLossProbability);
+        System.out.println("Discount factor: " + discountFactor);
+        System.out.println("Maximum state error: " + maxStateUtilityError);
+        System.out.println("Key loss probability: " + keyLossProbability);
         System.out.println("Positive terminal reward: " + positiveTerminalReward);
         System.out.println("Negative terminal reward: " + negativeTerminalReward);
-        System.out.println("               Step cost: " + stepCost);
-        System.out.println("        Total iterations: " + iterations);
-        System.out.println("      Milliseconds taken: " + tiempo);
+        System.out.println("Step cost: " + stepCost);
     }
 
     
@@ -132,16 +124,18 @@ public class MDP {
     	return optimalistUtility;
     }
 
-    private static int mostOptimalUtilityFunction() {
+    
 
-    	int iterations = 0;
+
+    /*private static void mostOptimalUtilityFunction() {
 
     	//Greek bra size?
     	double delta =  0.0;
     	double threshold = maxStateUtilityError * (1.0 - discountFactor) / discountFactor;
 
     	do {
-    		iterations++;
+    		//printUtilitiesAndPolicy(utility, policy);
+
     		delta = 0.0;
 
     		for (int s = 0; s < NUM_STATES; s++){
@@ -154,37 +148,14 @@ public class MDP {
     			}
     		}
 
-    		for (int s = 0; s < NUM_STATES; s++) {
-
-    			policy[s] = mostOptimalAction(s);
-
-    		}
-
-
     		//System.out.println(delta);
     	} while (delta >= threshold);
-
-    	return iterations;
     }
+	*/
 
 
 
 
-
-    //get the action that returns the most maximumist utility
-    private static int mostOptimalAction(int state) {
-    	double optimalistUtility = -Double.MAX_VALUE;
-    	int action = 0;
-
-    	for (int i = 0; i < NUM_ACTIONS; i++){
-    		double currentUtility = actionUtility(state, i);
-    		if (currentUtility > optimalistUtility){
-    			optimalistUtility = currentUtility;
-    			action = i;
-    		}
-    	}
-    	return action;
-    }
     
     
 
