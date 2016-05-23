@@ -81,8 +81,10 @@ public class MDP {
 
         printingImportantThings(timeElapsed, totalIterations);
 
+       // System.out.println("\n\n");
+
         // show method that prints utilities and policy
-        printUtilitiesAndPolicy(utility, policy);        
+       // printUtilitiesAndPolicy(utility, policy);        
 
     }
     
@@ -143,6 +145,7 @@ public class MDP {
     	do {
     		iterations++;
     		delta = 0.0;
+    		//printUtilitiesAndPolicy(utility, policy);
 
     		for (int s = 0; s < NUM_STATES; s++){
     			double oldUtility = utility[s];
@@ -154,14 +157,19 @@ public class MDP {
     			}
     		}
 
+    		//boolean changed = false;
+
     		for (int s = 0; s < NUM_STATES; s++) {
+
+    			//if (policy[s] != mostOptimalAction(s)){ changed = true; }
 
     			policy[s] = mostOptimalAction(s);
 
     		}
 
+    		//if(changed){System.out.println("------------------------\n\n\n" + iterations +"\n\n");}
 
-    		//System.out.println(delta);
+
     	} while (delta >= threshold);
 
     	return iterations;
