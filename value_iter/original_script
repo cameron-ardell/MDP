@@ -1,0 +1,78 @@
+#part one: discount rate!
+java MDP 0.09 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.19 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.29 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.39 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.49 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.59 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.69 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.79 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.89 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.04 v >> ../Science./exp4av.txt
+
+
+
+#part two: step cost!
+java MDP 0.99 1e-6 0.5 1 -1 -0.01 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.03 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.05 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.07 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.09 v >> ../Science./exv4bv.txt
+
+java MDP 0.99 1e-6 0.5 1 -1 -0.20 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.40 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.60 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.80 v >> ../Science./exv4bv.txt
+java MDP 0.99 1e-6 0.5 1 -1 -1.00 v >> ../Science./exv4bv.txt
+
+java MDP 0.99 1e-6 0.5 1 -1 -100 v >> ../Science./exv4bv.txt
+
+
+
+#part three: negative reward :(
+java MDP 0.99 1e-6 0.5 1 -0.0 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -0.2 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -0.4 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -0.6 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -0.8 -0.04 v >> ../Science./exv4cv.txt
+
+java MDP 0.99 1e-6 0.5 1 -1 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -2 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -3 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -4 -0.04 v >> ../Science./exv4cv.txt
+java MDP 0.99 1e-6 0.5 1 -5 -0.04 v >> ../Science./exv4cv.txt
+
+java MDP 0.99 1e-6 0.5 1 -100 -0.04 v >> ../Science./exv4cv.txt
+
+
+
+#part four: positive reward :)
+java MDP 0.99 1e-6 0.5 0.0 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 0.2 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 0.4 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 0.6 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 0.8 -1 -0.04 v >> ../Science./exv4dv.txt
+
+java MDP 0.99 1e-6 0.5 1 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 2 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 3 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 4 -1 -0.04 v >> ../Science./exv4dv.txt
+java MDP 0.99 1e-6 0.5 5 -1 -0.04 v >> ../Science./exv4dv.txt
+
+java MDP 0.99 1e-6 0.5 100 -1 -0.04 v >> ../Science./exv4dv.txt
+
+
+
+
+#part five: key loss prob!
+java MDP 0.99 1e-6 0.0 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.1 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.2 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.3 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.4 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.5 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.6 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.7 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.8 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 0.9 1 -1 -0.04 v >> ../Science./exv4ev.txt
+java MDP 0.99 1e-6 1.0 1 -1 -0.04 v >> ../Science./exv4ev.txt
